@@ -7,20 +7,25 @@
     <link rel="stylesheet" href="style.css">
     <script src="index.js"></script>
 </head>
-<body>
 
-<h1>Hamburger</h1> 
-<hr>
-<div id="asd">asd</div>
+
+<body oninput="calculateTotal()">
+    <h1>Hamburger</h1> 
 <img src="hambi.avif" alt="Hambuuuger" width="300" height="460"> <br>
- 
+
+<hr>
+
+<h2>Budget</h2>
+<p>Total available money: <span id="totalMoney">6000</span> </p>
+
+
+<div id="penzosszeg">Remaining Money: 6000</div>
 
 <label for="Bread">Bread</label>
-
 <br><input type="number" id="Bread" min="0" value="1"> <br>
 
 <label for="Salat">Salat</label>
-<br><input type="number" id="Salat" min="0" value="1" onchange="change()"> <br>
+<br><input type="number" id="Salat" min="0" value="1"> <br>
 
 <label for="Tomato">Tomato</label>
 <br><input type="number" id="Tomato" min="0" value="1"> <br>
@@ -28,5 +33,31 @@
 <label for="Meat">Meat</label>
 <br><input type="number" id="Meat" min="0" value="1"><br>
 
+<script>
+    const cost = {
+        Bread: 10,
+        Salat: 5,
+        Tomato: 20,
+        Meat: 50
+    };
+    // let kep = document.createElement('img');
+    // kep.src = "hambi.avif"
+    // kep.width = 100;
+    // document.getElementById('totalMoney').prepend(kep);
+    function calculateTotal() {
+        const START_MONEY = 6000;
+        let totalCost = 0;
+
+            const breadQty = parseInt(document.getElementById('Bread').value); totalCost += breadQty * cost.Bread;
+            const salatQty = parseInt(document.getElementById('Salat').value); totalCost += salatQty * cost.Salat;
+            const tomatoQty = parseInt(document.getElementById('Tomato').value); totalCost += tomatoQty * cost.Tomato;
+            const meatQty = parseInt(document.getElementById('Meat').value); totalCost += meatQty * cost.Meat;
+    
+            const remainingMoney = START_MONEY - totalCost;
+            document.getElementById('penzosszeg').textContent = `Remaining Money: ${remainingMoney}`;
+
+        }
+</script>
+</body>
 
 </html>
