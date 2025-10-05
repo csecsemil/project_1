@@ -194,12 +194,32 @@ button {
 
 #burger-stack{
     width: 300px;
-    height: 350px;
+    min-height: 100px;
     margin: 50px auto 30px auto;
     position: relative;
+    ;
+
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: flex-start;
+
     border: 1px solid #ddd;
     background-color: #ffffff;
     border-radius: 10px;
-    overflow: hidden;
+    padding: 10px 0;
+
 }
+
+#burger-stack img {
+        width: 20%;
+        height: auto;
+        bottom: 0;
+       margin: 2px 0;
+    }
     
+    .bottom-bun {
+        width: 90%;
+        margin-top: 5px;
+    }
+    ;
