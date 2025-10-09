@@ -196,30 +196,28 @@ button {
     width: 300px;
     min-height: 100px;
     margin: 50px auto 30px auto;
-    position: relative;
-    ;
 
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
-    justify-content: flex-start;
+    
 
     border: 1px solid #ddd;
     background-color: #ffffff;
-    border-radius: 10px;
-    padding: 10px 0;
-
+    border-radius: 5px;
+    padding: 10px;
+    box-sizing: border-box;
 }
 
-#burger-stack img {
-        width: 20%;
-        height: auto;
-        bottom: 0;
-       margin: 2px 0;
-    }
+.ingredient-name {
+    width: 100px;
+    text-align: center;
+    padding: 5px 0;
+    margin: 1px 0;
+    background-color: #f0f0f0;
+    border-radius: 3px;
+    font-weight: bold;
+    color: #444;
+}
+
     
-    .bottom-bun {
-        width: 90%;
-        margin-top: 5px;
-    }
-    ;

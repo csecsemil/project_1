@@ -4,12 +4,7 @@ const cost = {
     Tomato: 20,
     Meat: 50
 };
-const ingredients = {
-    Bread: 0,
-    Salat: 0,
-    Tomato: 0,
-    Meat: 0,
-};
+
 let remainingMoney = 6000;
 for (const i of document.getElementsByClassName("shopitem")) {
     i.value = 0;
@@ -24,7 +19,7 @@ for (const i of document.getElementsByClassName("shopitem")) {
 // function calculateTotal() {
 //     const START_MONEY = 6000;
 //     let totalCost = 0;
-
+//
 //     const breadQty = parseInt(document.getElementById('Bread').value); totalCost += breadQty * cost.Bread;
 //     const salatQty = parseInt(document.getElementById('Salat').value); totalCost += salatQty * cost.Salat;
 //     const tomatoQty = parseInt(document.getElementById('Tomato').value); totalCost += tomatoQty * cost.Tomato;
@@ -35,26 +30,51 @@ for (const i of document.getElementsByClassName("shopitem")) {
 
 // }
 let zIndexCounter = 10;
+let currentBurgerHeight = 0;
+
 
 function addIngredient(ingredient) {
     ingredients[ingredient]++;
     document.getElementById(ingredient).value = parseInt(document.getElementById(ingredient).value) + 1;
     remainingMoney -= cost[ingredient];
     document.getElementById("totalMoney").textContent = remainingMoney;
+    const stack = document.getElementById('burger-stack');
+    const ingredientDiv = document.createElement('div');
+    const img = document.createElement('img');
+    img.src = ingredientsImages[ingredient];
+    img.alt = ingredient;
+    img.className = 'ingredient-img';
+    ingredientDiv.appendChild(img);
 
-    
+    ingredientDiv.className = 'ingredient-name';
+    stack.appendChild(ingredientDiv);
+}
 
+function restartOrder() {
+    for (const key in ingredients) {
+        ingredients[key] = 0;
+        document.getElementById(key).value = 0;
     }
+    remainingMoney = 6000;
+    document.getElementById("totalMoney").textContent = remainingMoney;
+    const stack = document.getElementById('burger-stack');
+    stack.innerHTML = '';
+}
 
-    let currentBurgerHeight = 0;
 
-    const ingredientData = {
-        'Bread': { src: 'buci_lent.png', height: 40 },
-        'Salat': { src: 'salat_1.png', height: 15 },
-        'Tomato': { src: 'tomato_1.png', height: 20 },
-        'Meat': { src: 'hambi_hus.png', height: 35 }
-    };
+const ingredientsImages = {
+    Bread: "buci lent.png",
+    Salat: "salat_1.png",
+    Tomato: "tomato_1.png",
+    Meat: "hambi_hus.png"
+}
 
-    function restartOrder() {
-        location.reload();
-    }
+const ingredients = {
+    Bread: 0,
+    Salat: 0,
+    Tomato: 0,
+    Meat: 0
+};
+
+
+

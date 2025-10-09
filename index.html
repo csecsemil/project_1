@@ -8,57 +8,32 @@
     <script src="index.js" defer></script>
 </head>
 
-
 <body oninput="calculateTotal()">
     <h1> <img src="burger.png" alt="Burger">Hambuuuger <img src="burger.png" alt="Burger">
-</h1> 
-
-
-<hr>
-
-
-
-<h2>Budget</h2>
-
-
-<p>Total available coins: <span id="totalMoney">6000</span> 
-</p>
-
-<label for="Bread">Bread</label>
-<br><input class="shopitem" type="number" id="Bread" min="0" value="0" disabled>
-<button onclick="addIngredient('Bread')">add bread</button>
-<br>
-
-<label for="Salat">Salat</label>
-<br><input class="shopitem" type="number" id="Salat" min="0" value="0" disabled> 
-<button onclick="addIngredient('Salat')">add Salat</button><br>
-
-<label for="Tomato">Tomato</label>
-<br><input class="shopitem" type="number" id="Tomato" min="0" value="0" disabled> 
-<button onclick="addIngredient('Tomato')">add Tomato</button><br>
-
-<label for="Meat">Meat</label>
-<br><input class="shopitem" type="number" id="Meat" min="0" value="0" disabled> 
-<button onclick="addIngredient('Meat')">add Meat</button><br>
-
-<div id="burger-layer" style="position: relative;">
+    </h1> 
+    <hr>
+    <h2>Budget</h2>
+    <p>Total available coins: <span id="totalMoney">6000</span> 
+    </p>
+    <label for="Bread">Bread</label>
+    <br><input class="shopitem" type="number" id="Bread" min="0" value="0" disabled>
+    <button onclick="addIngredient('Bread')">add bread</button>
+    <br>
+    <label for="Salat">Salat</label>
+    <br><input class="shopitem" type="number" id="Salat" min="0" value="0" disabled> 
+    <button onclick="addIngredient('Salat')">add Salat</button><br>
+    <label for="Tomato">Tomato</label>
+    <br><input class="shopitem" type="number" id="Tomato" min="0" value="0" disabled> 
+    <button onclick="addIngredient('Tomato')">add Tomato</button><br>
+    <label for="Meat">Meat</label>
+    <br><input class="shopitem" type="number" id="Meat" min="0" value="0" disabled> 
+    <button onclick="addIngredient('Meat')">add Meat</button><br>
+    <div id="burger-layer" style="position: relative;"></div>
+    <div class="ingredient-row" style="justify-content: center; margin-top: 30px;">
+        <button id="restart-button" onclick="restartOrder()">RESTART (Újraindítás)</button>
     </div>
-
- <div class="ingredient-row" style="justify-content: center; margin-top: 30px;">
-            <button id="restart-button" onclick="restartOrder()">RESTART (Újraindítás)</button>
-        </div>
-    </div>
-
-
-<div class="header-section">
-    </div>
-<div id="burger-stack">
-    </div>
-<div class="container">
-
-
-
-
-
+    <div class="header-section"></div>
+    <div id="burger-stack"></div>
+    <div class="container"></div>
 </body>
 </html>
