@@ -8,7 +8,7 @@
     <script src="index.js" defer></script>
 </head>
 
-<body oninput="calculateTotal()">
+<body>
     <h1> <img src="burger.png" alt="Burger">Hambuuuger <img src="burger.png" alt="Burger">
     </h1> 
     <hr>
@@ -29,11 +29,48 @@
     <br><input class="shopitem" type="number" id="Meat" min="0" value="0" disabled> 
     <button onclick="addIngredient('Meat')">add Meat</button><br>
     <div id="burger-layer" style="position: relative;"></div>
+
     <div class="ingredient-row" style="justify-content: center; margin-top: 30px;">
-        <button id="restart-button" onclick="restartOrder()">RESTART (Újraindítás)</button>
+        <button id="restart-button" onclick="restartOrder()">RESTART </button>
     </div>
+
     <div class="header-section"></div>
     <div id="burger-stack"></div>
     <div class="container"></div>
+
+    <div id="tutorial-modal" class="modal">
+      <div class="modal-content">
+        <h2>Tutorial</h2>
+        <div id="correct-order-display">
+        </div>
+        <p>MEMORIZE THIS ORDER! You have 5 seconds.</p>
+      </div>
+    </div>
+
+    <button onclick="startGame()" style="background-color: #007bff; margin-top: 15px;"> 
+        New Game!
+    </button>
+
+    <div id="check-order-container">
+        <div id="result" style="margin-top:20px; font-weight:bold;"></div>
+    </div>
+    
+    <div class="header-section">
+    </div>
+    <div id="main-game-area">
+
+        <div class="container">
+        <div class="budget">
+            <h2>Budget</h2>
+            Total available coins: <span>6000</span></p>
+        </div>
+        <div class="ingredient-row" style="justify-content: center;">
+            <button id="restart-button" onclick="restartOrder()">RESTART 
+
+            </button>
+        </div>
+
+    </div>
+    
 </body>
 </html>
