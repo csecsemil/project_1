@@ -7,28 +7,12 @@
     <link rel="stylesheet" href="style.css">
     <script src="index.js" defer></script>
 </head>
-
 <body>
-    <h1> <img src="burger.png" alt="Burger">Hambuuuger <img src="burger.png" alt="Burger">
-    </h1> 
+    <h1> <img src="burger.png" alt="Burger">Hambuuuger <img src="burger.png" alt="Burger"></h1>
     <hr>
-   
-    
     <div id="timer-box">
-        Time remaining: <span id="time-remaining">30</span>seconds
+        Time remaining: <span id="time-remaining">30</span> seconds
     </div>
-
-
-    <div class="header-section">
-    </div>
-
-    <div class="video-container">
-    </div>
-
-
-
-
-    
     <div class="rules-box">
         <h3>Game Rules</h3>
         <ul>
@@ -43,89 +27,39 @@
             </li>
         </ul>
     </div>
-
-
-
-
-
-
-    <div id="main-game-area">
-    </div>
-
-
-
-    </div>
     <h2>Budget</h2>
-    <p>Total available coins: <span id="totalMoney">6000</span> 
-    </p>
-    <label for="Bread">Bread</label>
-    <br><input class="shopitem" type="number" id="Bread" min="0" value="0" disabled>
-    <button onclick="addIngredient('Bread')">🍞 add bread</button>
-    <br>
-    <label for="Salat">Salat</label>
-    <br><input class="shopitem" type="number" id="Salat" min="0" value="0" disabled> 
-    <button onclick="addIngredient('Salat')">🥬 add Salat</button><br>
-    <label for="Tomato">Tomato</label>
-    <br><input class="shopitem" type="number" id="Tomato" min="0" value="0" disabled> 
-    <button onclick="addIngredient('Tomato')">🍅 add Tomato</button><br>
-    <label for="Meat">Meat</label>
-    <br><input class="shopitem" type="number" id="Meat" min="0" value="0" disabled> 
-    <button onclick="addIngredient('Meat')">🍖 add Meat</button><br>
-    <div id="burger-layer" style="position: relative;"></div>
-
+    <p>Total available coins: <span id="totalMoney">6000</span></p>
+    <div id="main-game-area">
+        <label for="Bread">Bread</label><br>
+        <input class="shopitem" type="number" id="Bread" min="0" value="0" disabled>
+        <button onclick="addIngredient('Bread')">🍞 add bread</button><br>
+        <label for="Salat">Salat</label><br>
+        <input class="shopitem" type="number" id="Salat" min="0" value="0" disabled>
+        <button onclick="addIngredient('Salat')">🥬 add Salat</button><br>
+        <label for="Tomato">Tomato</label><br>
+        <input class="shopitem" type="number" id="Tomato" min="0" value="0" disabled>
+        <button onclick="addIngredient('Tomato')">🍅 add Tomato</button><br>
+        <label for="Meat">Meat</label><br>
+        <input class="shopitem" type="number" id="Meat" min="0" value="0" disabled>
+        <button onclick="addIngredient('Meat')">🍖 add Meat</button><br>
+    </div>
+    <div id="burger-stack"></div>
     <div class="ingredient-row" style="justify-content: center; margin-top: 30px;">
-        <button id="restart-button" onclick="restartOrder()">RESTART </button>
+        <button id="restart-button" onclick="restartOrder()">RESTART</button>
     </div>
-
-    <!-- CHECK ORDER GOMB A HOZZÁVALÓK FÖLÉ -->
     <div style="text-align:center; margin-bottom: 15px;">
-        <button id="check-order-btn" onclick="checkOrder()" style="background-color: #ff9900; font-weight: bold;">
-            Check Order
-        </button>
+        <button id="check-order-btn" onclick="checkOrder()" style="background-color: #ff9900; font-weight: bold;">Check Order</button>
     </div>
-    
-<div id="check-order-container">
+    <div id="check-order-container">
         <div id="result" style="margin-top:20px; font-weight:bold;"></div>
     </div>
-    
-    <div class="header-section"></div>
-    <div id="burger-stack">
-        
-    </div>
-    <div class="container"></div>
-
     <div id="tutorial-modal" class="modal">
       <div class="modal-content">
         <h2>Tutorial</h2>
-        <div id="correct-order-display">
-        </div>
+        <div id="correct-order-display"></div>
         <p>MEMORIZE THIS ORDER! You have 5 seconds.</p>
       </div>
     </div>
-
-    <button onclick="startGame()" style="background-color: #007bff; margin-top: 15px;"> 
-        New Game!
-    </button>
-
-    
-    
-    <div class="header-section">
-    </div>
-    <div id="main-game-area">
-
-        </div>
-        <div class="ingredient-row" style="justify-content: center;">
-            <button id="restart-button" onclick="restartOrder()">RESTART 
-
-            </button>
-        </div>
-
-    </div> <br> <br>
-
-    
-
-    
-
-
+    <button onclick="startGame()" style="background-color: #007bff; margin-top: 15px;">New Game!</button>
 </body>
 </html>
