@@ -54,7 +54,7 @@ function addIngredient(ingredient) {
 
 
 const ingredientsImages = {
-    Bread: "buci lent.png",
+    Bread: "buci_lent.png",
     Salat: "salat_1.png",
     Tomato: "tomato_1.png",
     Meat: "hambi_hus.png"
@@ -168,3 +168,44 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+
+const BASE_INGREDIENTS = ["Bread", "Salat", "Tomato", "Meat", "Bread"];
+const MAX_RECIPE_LENGTH = 5;
+let currentCorrectOrder = [];
+let playerOrder = [];
+let gameActive = false;
+
+function generateRandomOrder() {
+    let recipe = [];
+    const recipeLength = Math.floor(Math.random() * (MAX_RECIPE_LENGTH) + 1);
+
+    for (let i = 0; i < recipeLength; i++) {
+        const randomIndex = Math.floor(Math.random() * BASE_INGREDIENTS.length);
+            recipe.push(BASE_INGREDIENTS[randomIndex]);
+    }
+    return  shuffleArray(recipe);
+}
+
+function addIngredient(ingredientName) {
+    if (!gameActive) {
+        alert('Please start the game first!');
+        return;
+    }
+
+    const data = ingredientsData[ingredientName];
+    if (!data) return;
+
+    playerOrder.push(ingredientName);
+
+    const ingredientImage = document.createElement('img');
+        ingredientImage.src = data.src;
+        ingredientImage.alt = ingredientName;
+        stack.appendChild(ingredientImage);
+
+    if (playerOrder.length === currentCorrectOrder.length) {
+        checkOrder();
+    }
+}
+
+function startGame() {
+    if 

@@ -34,8 +34,17 @@
         <button id="restart-button" onclick="restartOrder()">RESTART </button>
     </div>
 
+    <!-- CHECK ORDER GOMB A HOZZÁVALÓK FÖLÉ -->
+    <div style="text-align:center; margin-bottom: 15px;">
+        <button id="check-order-btn" onclick="checkOrder()" style="background-color: #ff9900; font-weight: bold;">
+            Check Order
+        </button>
+    </div>
+
     <div class="header-section"></div>
-    <div id="burger-stack"></div>
+    <div id="burger-stack">
+        <img src="buci_lent.png" class="bottom-bun" >
+    </div>
     <div class="container"></div>
 
     <div id="tutorial-modal" class="modal">
@@ -59,10 +68,6 @@
     </div>
     <div id="main-game-area">
 
-        <div class="container">
-        <div class="budget">
-            <h2>Budget</h2>
-            Total available coins: <span>6000</span></p>
         </div>
         <div class="ingredient-row" style="justify-content: center;">
             <button id="restart-button" onclick="restartOrder()">RESTART 
@@ -70,7 +75,10 @@
             </button>
         </div>
 
-    </div>
+    </div> <br> <br>
+
     
+   
+
 </body>
 </html>
