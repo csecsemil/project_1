@@ -12,22 +12,65 @@
     <h1> <img src="burger.png" alt="Burger">Hambuuuger <img src="burger.png" alt="Burger">
     </h1> 
     <hr>
+   
+    
+    <div id="timer-box">
+        Time remaining: <span id="time-remaining">30</span>seconds
+    </div>
+
+
+    <div class="header-section">
+    </div>
+
+    <div class="video-container">
+    </div>
+
+
+
+
+    
+    <div class="rules-box">
+        <h3>Game Rules</h3>
+        <ul>
+            <li>Build the burger in the correct order.</li>
+            <li>You have a limited budget to spend on ingredients.</li>
+            <li>Each ingredient has a specific cost.</li>
+            <li>Try to remember the correct order displayed at the start!</li>
+            <li>
+                <span style="color:#e74c3c; font-weight:bold;">
+                    🗑️ If you make a mistake or restart before finishing, <u>200 coin</u> will be deducted as a penalty!
+                </span>
+            </li>
+        </ul>
+    </div>
+
+
+
+
+
+
+    <div id="main-game-area">
+    </div>
+
+
+
+    </div>
     <h2>Budget</h2>
     <p>Total available coins: <span id="totalMoney">6000</span> 
     </p>
     <label for="Bread">Bread</label>
     <br><input class="shopitem" type="number" id="Bread" min="0" value="0" disabled>
-    <button onclick="addIngredient('Bread')">add bread</button>
+    <button onclick="addIngredient('Bread')">🍞 add bread</button>
     <br>
     <label for="Salat">Salat</label>
     <br><input class="shopitem" type="number" id="Salat" min="0" value="0" disabled> 
-    <button onclick="addIngredient('Salat')">add Salat</button><br>
+    <button onclick="addIngredient('Salat')">🥬 add Salat</button><br>
     <label for="Tomato">Tomato</label>
     <br><input class="shopitem" type="number" id="Tomato" min="0" value="0" disabled> 
-    <button onclick="addIngredient('Tomato')">add Tomato</button><br>
+    <button onclick="addIngredient('Tomato')">🍅 add Tomato</button><br>
     <label for="Meat">Meat</label>
     <br><input class="shopitem" type="number" id="Meat" min="0" value="0" disabled> 
-    <button onclick="addIngredient('Meat')">add Meat</button><br>
+    <button onclick="addIngredient('Meat')">🍖 add Meat</button><br>
     <div id="burger-layer" style="position: relative;"></div>
 
     <div class="ingredient-row" style="justify-content: center; margin-top: 30px;">
@@ -40,10 +83,14 @@
             Check Order
         </button>
     </div>
-
+    
+<div id="check-order-container">
+        <div id="result" style="margin-top:20px; font-weight:bold;"></div>
+    </div>
+    
     <div class="header-section"></div>
     <div id="burger-stack">
-        <img src="buci_lent.png" class="bottom-bun" >
+        
     </div>
     <div class="container"></div>
 
@@ -60,9 +107,7 @@
         New Game!
     </button>
 
-    <div id="check-order-container">
-        <div id="result" style="margin-top:20px; font-weight:bold;"></div>
-    </div>
+    
     
     <div class="header-section">
     </div>
@@ -78,7 +123,9 @@
     </div> <br> <br>
 
     
-   
+
+    
+
 
 </body>
 </html>

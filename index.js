@@ -114,21 +114,66 @@ function addIngredient(ingredientName) {
     ingredients[ingredientName]++;
     document.getElementById(ingredientName).value = parseInt(document.getElementById(ingredientName).value) + 1;
     remainingMoney -= cost[ingredientName];
+
+    showFloatingCost(-cost[ingredientName]);
+
     document.getElementById("totalMoney").textContent = remainingMoney;
     // NEM automatikus ellenőrzés!
 }
+
+function showFloatingCost(amount) {
+    const stack = document.getElementById('burger-stack');
+    const floating = document.createElement('div');
+    floating.textContent = `${amount} Ft`;
+    floating.style.top = '0';
+    stack.appendChild(floating);
+
+    setTimeout(() => {
+        floating.remove();
+    }, 1000); // Eltávolítja 1 másodperc múlva
+}
+
+
+
 
 function checkOrder() {
     gameActive = false;
     const correctString = JSON.stringify(CORRECT_ORDER);
     const playerString = JSON.stringify(playerOrder);
     const resultDiv = document.getElementById('result');
-    if (correctString === playerString) {
-        resultDiv.textContent = 'Good order!';
+    if(correctString === playerString) {
+        resultDiv.textContext = 'Good order!';
+        resultDiv.classList.add('success');
     } else {
         resultDiv.textContent = 'Wrong order!';
+        resultDiv.classList.remove('success');
+        remainingMoney -= 200;
+        document.getElementById("totalMoney").textContent = remainingMoney;
+        showFloatingCost(-200);
     }
+
 }
+
+function startGame() {
+    if (gameActive && playerOrder.length > 0) {
+        remainingMoney -= 200;
+        document.getElementById("totalMoney").textContent = remainingMoney;
+        showFloatingCost(-200);
+    }
+    restartOrder();
+    playerOrder = [];
+    const randomIndex = Math.floor(Math.random() * BURGER_RECIPES.length);
+    CORRECT_ORDER = BURGER_RECIPES[randomIndex];
+    const orderDisplay = document.getElementById('correct-order-display');
+    orderDisplay.innerHTML = '<ul>' + CORRECT_ORDER.map(item => `<li>${item}</li>`).join('') + '</ul>';
+    document.getElementById('tutorial-modal').style.display = 'block';
+    setTimeout(() => {
+        document.getElementById('tutorial-modal').style.display = 'none';
+        gameActive = true;
+        alert('Game Started! Build the burger in the correct order.');
+    }, 5000);
+}
+
 
 function restartOrder() {
     for (const key in ingredients) {
@@ -168,44 +213,77 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-
-const BASE_INGREDIENTS = ["Bread", "Salat", "Tomato", "Meat", "Bread"];
-const MAX_RECIPE_LENGTH = 5;
-let currentCorrectOrder = [];
-let playerOrder = [];
-let gameActive = false;
-
-function generateRandomOrder() {
-    let recipe = [];
-    const recipeLength = Math.floor(Math.random() * (MAX_RECIPE_LENGTH) + 1);
-
-    for (let i = 0; i < recipeLength; i++) {
-        const randomIndex = Math.floor(Math.random() * BASE_INGREDIENTS.length);
-            recipe.push(BASE_INGREDIENTS[randomIndex]);
-    }
-    return  shuffleArray(recipe);
-}
-
-function addIngredient(ingredientName) {
-    if (!gameActive) {
-        alert('Please start the game first!');
-        return;
-    }
-
-    const data = ingredientsData[ingredientName];
-    if (!data) return;
-
-    playerOrder.push(ingredientName);
-
-    const ingredientImage = document.createElement('img');
-        ingredientImage.src = data.src;
-        ingredientImage.alt = ingredientName;
-        stack.appendChild(ingredientImage);
-
-    if (playerOrder.length === currentCorrectOrder.length) {
-        checkOrder();
-    }
-}
+const BURGER_RECIPES = [
+    ["Bread", "Meat", "Tomato", "Salat", "Bread"], // Klasszikus burger
+    ["Bread", "Salat", "Tomato", "Bread"],         // Vegaburger
+    ["Bread", "Meat", "Meat", "Tomato", "Bread"],  // Dupla húsos
+    ["Bread", "Tomato", "Salat", "Meat", "Bread"],  // Random burger
+    ["Bread", "Meat", "Meat", "Meat", "Bread"],
+    ["Bread", "Tomato", "Salat", "Tomato", "Bread"],
+    ["Bread", "Tomato", "Salat", "Salat", "Meat", "Bread"],
+    ["Bread", "Bread", "Bread", "Bread", "Bread"],
+    ["Bread", "Meat", "Bread", "Meat", "Bread"],
+    ["Bread", "Meat", "Tomato", "Bread", "Meat", "Bread"],
+    ["Bread", "Meat", "Tomato", "Salat", "Meat", "Bread"]
+];
 
 function startGame() {
-    if 
+    restartOrder();
+    playerOrder = [];
+    const randomIndex = Math.floor(Math.random() * BURGER_RECIPES.length);
+    CORRECT_ORDER = BURGER_RECIPES[randomIndex];
+    const orderDisplay = document.getElementById('correct-order-display');
+    orderDisplay.innerHTML = '<ul>' + CORRECT_ORDER.map(item => `<li>${item}</li>`).join('') + '</ul>';
+    document.getElementById('tutorial-modal').style.display = 'block';
+    setTimeout(() => {
+        document.getElementById('tutorial-modal').style.display = 'none';
+        gameActive = true;
+        alert('Game Started! Build the burger in the correct order.');
+    }, 5000);
+}
+
+const totalMoneySpan = document.getElementById("totalMoney");
+if (remainingMoney < 1000) {
+    totalMoneySpan.classList.add("low-money");
+} else {
+    totalMoneySpan.classList.remove("low-money");
+}
+
+
+if(correctString === playerString) {
+    resultDiv.textContent = 'Good order!';
+    resultDiv.classList.add('success');
+    setTimeout(() => resultDiv.classList.remove('success'), 500);
+ } else {
+    resultDiv.textContent = 'Wrong order!';
+    resultDiv.classList.add('error');
+}
+
+
+const START_TIME = 30; // 30 másodperc
+let timeLeft = START_TIME;
+let timeInterval = null;
+
+function startTimer() {
+    timeLeft = START_TIME;
+    const timeDisplay = document.getElementById('time-remaining');
+    if (temerInterval) {
+        clearInterval(timeInterval);
+    }
+
+    timeInterval = setInterval(() => {
+        timeLeft--;
+        timeDisplay.textContent = timeLeft;
+        if (timeLeft <= 10) {
+           timerDisplay.classList.add('time-low');
+        } else {
+           timerDisplay.classList.remove('time-low');
+        }
+        if (timeLeft <= 0) {
+            clearInterval(timeInterval);
+            timerFailed();
+        }
+    }, 1000);
+}
+
+    
